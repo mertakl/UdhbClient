@@ -1,11 +1,17 @@
-﻿export interface Yolcu {
-  first_name: string;
-  last_name: string;
-  username: string;
-  email: string;
-  accessToken: string;
-  roles: {
-    name: string;
-  };
+﻿import {Country} from './country';
+import {Grup} from './grup';
+
+export interface Yolcu {
+  id: number;
+  uetdsYolcuRefNo: string;
+  uyrukUlke: Country;
+  cinsiyet: string;
+  tcKimlikPasaportNo: string;
+  adi: string;
+  soyadi: string;
+  koltukNo: string;
+  telefonNo: string;
+  durum: string;
+  grup: Grup;
 }
 

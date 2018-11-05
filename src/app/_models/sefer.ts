@@ -10,9 +10,4 @@ export class Sefer {
   seferBitisTarihi: string;
   seferBitisSaati: string;
   durum: number;
-  iptalAciklama: string;
-  createdAt: string;
-  updatedAt: string;
-  createdBy: number;
-  updatedBy: number;
 }
