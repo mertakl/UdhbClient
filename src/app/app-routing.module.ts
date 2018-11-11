@@ -3,12 +3,13 @@ import {RegisterComponent} from './register';
 import {LoginComponent} from './login';
 import {AuthGuard} from './_guards';
 import {HomeComponent} from './home';
-import {SeferComponent} from './sefer/sefer.component';
-import {GrupComponent} from './grup/grup.component';
-import {YolcuComponent} from './yolcu/yolcu.component';
-import {PersonelComponent} from './personel/personel.component';
-import {UdhbKullaniciComponent} from './udhb-kullanici/udhb-kullanici.component';
-import {UserComponent} from './user/user.component';
+
+import {GrupComponent} from './grup-crud/grup';
+import {SeferComponent} from './sefer-crud/sefer';
+import {YolcuComponent} from './yolcu-crud/yolcu/yolcu.component';
+import {PersonelComponent} from './personel-crud/personel';
+import {UdhbKullaniciComponent} from './udhb-kullanici-crud/udhb-kullanici/udhb-kullanici.component';
+import {UserComponent} from './user-crud/user/user.component';
 
 
 const appRoutes: Routes = [

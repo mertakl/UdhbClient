@@ -5,7 +5,7 @@ import {District} from './district';
 
 export interface Grup {
   id: number;
-  uetdsGrupRefNo: string;
+  uetdsGrupRefNo: number;
   grupAdi: string;
   grupAciklama: string;
   baslangicUlke: Country;

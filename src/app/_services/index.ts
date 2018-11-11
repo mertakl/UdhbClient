@@ -6,3 +6,4 @@ export * from './grup.service';
 export * from './personel.service';
 export * from './udhb-kullanici.service';
 export * from './yolcu.service';
+export * from './place.service';

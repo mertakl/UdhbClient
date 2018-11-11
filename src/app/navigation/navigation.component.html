@@ -1,28 +1,39 @@
-<nav class="main-navigation">
-  <div class="navbar-header animated fadeInUp">
-    <a class="navbar-brand" href="#">Udhb Yönetim Sistemi</a>
+<nav class="navbar navbar-expand-lg bg-info">
+  <div class="container">
+    <div class="navbar-translate">
+      <a class="navbar-brand">Uetds Yönetim Sistemi</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="/sefer" class="nav-link">Sefer</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="/grup" class="nav-link">Grup</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="/yolcu" class="nav-link">Yolcu</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="/personel" class="nav-link">Personel</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="/udhb-kullanici" class="nav-link">Udhb Kullanıcı</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="/kullanici" class="nav-link">Sistem Kullanıcıları</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a (click)="logout()" class="nav-link">Çıkış Yap</a>
+        </li>
+      </ul>
+    </div>
   </div>
-  <ul class="nav-list">
-    <li class="nav-list-item">
-      <a routerLink="/sefer" class="nav-link">Sefer</a>
-    </li>
-    <li class="nav-list-item">
-      <a routerLink="/grup" class="nav-link">Grup</a>
-    </li>
-    <li class="nav-list-item">
-      <a routerLink="/yolcu" class="nav-link">Yolcu</a>
-    </li>
-    <li class="nav-list-item">
-      <a routerLink="/personel" class="nav-link">Personel</a>
-    </li>
-    <li class="nav-list-item">
-      <a routerLink="/udhb-kullanici" class="nav-link">Udhb Kullanıcı</a>
-    </li>
-    <li class="nav-list-item">
-      <a routerLink="/kullanici" class="nav-link">Sistem Kullanıcıları</a>
-    </li>
-    <li class="nav-list-item">
-      <a (click)="logout()" class="nav-link">Çıkış Yap</a>
-    </li>
-  </ul>
 </nav>
+

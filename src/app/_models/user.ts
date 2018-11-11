@@ -1,12 +1,12 @@
-﻿export interface User {
+﻿import {RoleName} from '../_enums';
+
+export interface User {
   id: number;
   first_name: string;
   last_name: string;
   username: string;
   email: string;
   accessToken: string;
-  roles: {
-    name: string;
-  };
+  roles: RoleName;
 }
 

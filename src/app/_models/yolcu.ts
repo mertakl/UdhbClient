@@ -1,17 +1,18 @@
 ﻿import {Country} from './country';
 import {Grup} from './grup';
+import {AktifPasif, Cinsiyet} from '../_enums';
 
 export interface Yolcu {
   id: number;
-  uetdsYolcuRefNo: string;
+  uetdsYolcuRefNo: number;
   uyrukUlke: Country;
-  cinsiyet: string;
+  cinsiyet: Cinsiyet;
   tcKimlikPasaportNo: string;
   adi: string;
   soyadi: string;
   koltukNo: string;
   telefonNo: string;
-  durum: string;
+  durum: AktifPasif;
   grup: Grup;
 }
 

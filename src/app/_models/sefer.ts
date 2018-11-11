@@ -10,4 +10,6 @@ export class Sefer {
   seferBitisTarihi: string;
   seferBitisSaati: string;
   durum: number;
+  iptalAciklama: string;
+  aktifAciklama: string;
 }

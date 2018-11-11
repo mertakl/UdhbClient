@@ -13,9 +13,16 @@ export class UserService {
     return this.http.get<User[]>(`${environment.apiUrl}/api/users`);
   }
 
-
-  register(user: User) {
+  addUser(user: User) {
     return this.http.post(`${environment.apiUrl}/api/auth/signup`, user);
+  }
+
+  updateUser(user: User) {
+    return this.http.put(`${environment.apiUrl}/api/auth/updateUser`, user);
+  }
+
+  deleteUser(id: number) {
+    return this.http.delete(`${environment.apiUrl}/api/auth/deleteUser` + id);
   }
 
 }
