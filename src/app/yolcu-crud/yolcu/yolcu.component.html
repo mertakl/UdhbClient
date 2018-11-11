@@ -1,0 +1,78 @@
+<app-navigation></app-navigation>
+<div class="container">
+  <div class="form">
+    <mat-form-field floatPlaceholder="never" color="accent">
+      <input matInput type="text" (keyup)="applyFilter($event.target.value)" placeholder="Sorgula">
+    </mat-form-field>
+  </div>
+  <div>
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id</th>
+        <td mat-cell *matCellDef="let yolcu"> {{yolcu.id}}</td>
+      </ng-container>
+      <ng-container matColumnDef="uetdsGrupRefNo">
+        <th mat-header-cell *matHeaderCellDef> Uetds Grup Ref No</th>
+        <td mat-cell *matCellDef="let yolcu"> {{yolcu.grup.uetdsGrupRefNo}}</td>
+      </ng-container>
+      <ng-container matColumnDef="uetdsYolcuRefNo">
+        <th mat-header-cell *matHeaderCellDef> Uetds Yolcu Ref No</th>
+        <td mat-cell *matCellDef="let yolcu"> {{yolcu.uetdsYolcuRefNo}}</td>
+      </ng-container>
+      <ng-container matColumnDef="uyrukUlke">
+        <th mat-header-cell *matHeaderCellDef> Uyruk Ulke</th>
+        <td mat-cell *matCellDef="let yolcu"> {{yolcu.uyrukUlke.countryName}}</td>
+      </ng-container>
+      <ng-container matColumnDef="cinsiyet">
+        <th mat-header-cell *matHeaderCellDef> Cinsiyet</th>
+        <td mat-cell *matCellDef="let yolcu"> {{yolcu.cinsiyet}}</td>
+      </ng-container>
+      <ng-container matColumnDef="tcKimlikPasaportNo">
+        <th mat-header-cell *matHeaderCellDef> Tc Kimlik Pasaport No</th>
+        <td mat-cell *matCellDef="let yolcu"> {{yolcu.tcKimlikPasaportNo}}</td>
+      </ng-container>
+      <ng-container matColumnDef="adi">
+        <th mat-header-cell *matHeaderCellDef> Adı</th>
+        <td mat-cell *matCellDef="let yolcu"> {{yolcu.adi}}</td>
+      </ng-container>
+      <ng-container matColumnDef="soyadi">
+        <th mat-header-cell *matHeaderCellDef> Soaydı</th>
+        <td mat-cell *matCellDef="let yolcu"> {{yolcu.soyadi}}</td>
+      </ng-container>
+      <ng-container matColumnDef="koltukNo">
+        <th mat-header-cell *matHeaderCellDef> Koltuk No</th>
+        <td mat-cell *matCellDef="let yolcu"> {{yolcu.koltukNo}}</td>
+      </ng-container>
+      <ng-container matColumnDef="telefonNo">
+        <th mat-header-cell *matHeaderCellDef> Telefon</th>
+        <td mat-cell *matCellDef="let yolcu"> {{yolcu.telefonNo}}</td>
+      </ng-container>
+      <ng-container matColumnDef="durum">
+        <th mat-header-cell *matHeaderCellDef> Durum</th>
+        <td mat-cell *matCellDef="let yolcu"> {{yolcu.durum}}</td>
+      </ng-container>
+      <!-- actions -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+          <button mat-icon-button color="primary" (click)="addYolcu()">
+            <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          </button>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row;">
+          <button mat-icon-button color="accent"
+                  (click)="updateYolcu(yolcu.id, yolcu.uetdsYolcuRefNo, yolcu.uyrukUlke.countryName, yolcu.cinsiyet, yolcu.tcKimlikPasaportNo,
+                  yolcu.adi, yolcu.soyadi, yolcu.koltukNo, yolcu.telefonNo)">
+            <mat-icon aria-label="Edit">edit</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" (click)="deleteYolcu(yolcu.id, yolcu.uetdsYolcuRefNo)">
+            <mat-icon aria-label="Delete">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
+

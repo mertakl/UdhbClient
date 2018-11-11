@@ -1,0 +1,82 @@
+<app-navigation></app-navigation>
+<div class="container">
+  <div class="form">
+    <mat-form-field floatPlaceholder="never" color="accent">
+      <input matInput type="text" (keyup)="applyFilter($event.target.value)" placeholder="Sorgula">
+    </mat-form-field>
+  </div>
+  <div>
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id</th>
+        <td mat-cell *matCellDef="let sefer"> {{sefer.id}}</td>
+      </ng-container>
+      <ng-container matColumnDef="uetdsSeferReferansNo">
+        <th mat-header-cell *matHeaderCellDef> Uetds Sefer Referans No</th>
+        <td mat-cell *matCellDef="let sefer"> {{sefer.uetdsSeferReferansNo}}</td>
+      </ng-container>
+      <ng-container matColumnDef="aracPlaka">
+        <th mat-header-cell *matHeaderCellDef> Arac Plaka</th>
+        <td mat-cell *matCellDef="let sefer"> {{sefer.aracPlaka}}</td>
+      </ng-container>
+      <ng-container matColumnDef="hareketTarihi">
+        <th mat-header-cell *matHeaderCellDef> Hareket Tarihi</th>
+        <td mat-cell *matCellDef="let sefer"> {{sefer.hareketTarihi | date: 'dd/MM/yyyy'}}</td>
+      </ng-container>
+      <ng-container matColumnDef="hareketSaati">
+        <th mat-header-cell *matHeaderCellDef> Hareket Saati</th>
+        <td mat-cell *matCellDef="let sefer"> {{sefer.hareketSaati}}</td>
+      </ng-container>
+      <ng-container matColumnDef="seferAciklama">
+        <th mat-header-cell *matHeaderCellDef> Sefer Aciklama</th>
+        <td mat-cell *matCellDef="let sefer"> {{(sefer.seferAciklama | slice:0:10 ) + (sefer.seferAciklama.length > 10 ? '...' : '')}}</td>
+      </ng-container>
+      <ng-container matColumnDef="aracTelefonu">
+        <th mat-header-cell *matHeaderCellDef> Arac Telefonu</th>
+        <td mat-cell *matCellDef="let sefer"> {{sefer.aracTelefonu}}</td>
+      </ng-container>
+      <ng-container matColumnDef="firmaSeferNo">
+        <th mat-header-cell *matHeaderCellDef> Firma Sefer No</th>
+        <td mat-cell *matCellDef="let sefer"> {{sefer.firmaSeferNo}}</td>
+      </ng-container>
+      <ng-container matColumnDef="seferBitisTarihi">
+        <th mat-header-cell *matHeaderCellDef> Sefer Bitis Tarihi</th>
+        <td mat-cell *matCellDef="let sefer"> {{sefer.seferBitisTarihi | date: 'dd/MM/yyyy'}}</td>
+      </ng-container>
+      <ng-container matColumnDef="seferBitisSaati">
+        <th mat-header-cell *matHeaderCellDef> Sefer Bitis Saati</th>
+        <td mat-cell *matCellDef="let sefer"> {{sefer.seferBitisSaati}}</td>
+      </ng-container>
+      <ng-container matColumnDef="durum">
+        <th mat-header-cell *matHeaderCellDef> Durum</th>
+        <td mat-cell *matCellDef="let sefer"> {{sefer.durum}}</td>
+      </ng-container>
+      <!-- actions -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+          <button mat-icon-button color="primary" matTooltip="Sefer Ekle" (click)="addSefer()">
+            <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          </button>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let sefer;">
+          <button mat-icon-button color="accent" matTooltip="Sefer Araç Plaka Güncelle"
+                  (click)="updateSefer(sefer.id, sefer.uetdsSeferReferansNo, sefer.aracPlaka, sefer.hareketTarihi, sefer.hareketSaati,sefer.seferAciklama, sefer.aracTelefonu, sefer.firmaSeferNo, sefer.seferBitisTarihi, sefer.seferBitisSaati)">
+            <mat-icon aria-label="Edit">edit</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" matTooltip="Sefer İptal"
+                  (click)="deleteSefer(sefer.id, sefer.uetdsSeferReferansNo)">
+            <mat-icon aria-label="Delete">delete</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" matTooltip="Sefer Akfif Et"
+                  (click)="activeSefer(sefer.id, sefer.uetdsSeferReferansNo)">
+            <mat-icon aria-label="Active">done_outline</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
+

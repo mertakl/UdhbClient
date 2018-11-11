@@ -1,0 +1,31 @@
+<div class="container">
+
+  <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" [(ngModel)]="data.id" name="id" [readonly]="true" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" [(ngModel)]="data.uetdsSeferReferansNo" name="uetdsSeferReferansNo"
+               [readonly]="true" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field color="accent">
+        <textarea matInput #input class="form-control" placeholder="Aktif Açıklama" [(ngModel)]="data.aktifAciklama"
+                  name="aktifAciklama" required></textarea>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close="1" (click)="confirmActive()">Aktif Et</button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">Vazgeç</button>
+    </div>
+  </form>
+</div>
+

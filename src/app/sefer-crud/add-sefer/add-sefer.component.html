@@ -1,0 +1,72 @@
+<div class="container">
+  <h3 mat-dialog-title>Sefer Ekle</h3>
+
+  <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Arac Plaka" [(ngModel)]="data.aracPlaka"
+               name="aracPlaka" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" [matDatepicker]="hareketTarihi" placeholder="Hareket Tarihi"
+               [(ngModel)]="data.hareketTarihi" name="hareketTarihi" required>
+        <mat-datepicker-toggle matSuffix [for]="hareketTarihi"></mat-datepicker-toggle>
+        <mat-datepicker #hareketTarihi></mat-datepicker>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Hareket Saat" [(ngModel)]="data.hareketSaati"
+               name="hareketSaati" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field color="accent">
+        <textarea matInput #input class="form-control" placeholder="Sefer Açıklama" [(ngModel)]="data.seferAciklama"
+                  name="seferAciklama" required></textarea>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Araç Telefonu" [(ngModel)]="data.aracTelefonu"
+               name="aracTelefonu" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Firma Sefer No" [(ngModel)]="data.firmaSeferNo"
+               name="firmaSeferNo" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" [matDatepicker]="seferBitisTarihi" placeholder="Sefer Bitiş Tarihi"
+               [(ngModel)]="data.seferBitisTarihi" name="seferBitisTarihi" required>
+        <mat-datepicker-toggle matSuffix [for]="seferBitisTarihi"></mat-datepicker-toggle>
+        <mat-datepicker #seferBitisTarihi></mat-datepicker>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Sefer Bitiş Saati" [(ngModel)]="data.seferBitisSaati"
+               name="seferBitisSaati" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button [type]="submit" [disabled]="!formControl.valid" mat-dialog-close="1" (click)="confirmAdd()">
+        Kaydet
+      </button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">Vazgeç</button>
+    </div>
+  </form>
+</div>
