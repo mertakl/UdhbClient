@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 mat-dialog-title>Add new Issue</h3>
+  <h3 mat-dialog-title>Yolcu Güncelle</h3>
 
   <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
 
@@ -11,24 +11,20 @@
     </div>
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Uetds Yolcu Referans No"
-               [(ngModel)]="data.uetdsYolcuRefNo" name="uetdsYolcuRefNo" required>
+        <mat-select placeholder="Uyruk Ülke" name="uyrukUlke"
+                    [(ngModel)]="data.uyrukUlke" required>
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let country  of countries" [value]="country">{{country.countryName}}</mat-option>
+        </mat-select>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Uyruk Ülke" [(ngModel)]="data.uyrukUlke"
-               name="uyrukUlke" required>
-        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-      </mat-form-field>
-    </div>
-    <div class="form">
-      <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Cinsiyet" [(ngModel)]="data.cinsiyet"
-               name="cinsiyet" required>
-        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-      </mat-form-field>
+      <mat-select placeholder="Cinsiyet" [(ngModel)]="data.cinsiyet" name="cinsiyet">
+        <mat-option *ngFor="let g of genders" [value]="g.title">
+          {{ g.value }}
+        </mat-option>
+      </mat-select>
     </div>
     <div class="form">
       <mat-form-field color="accent">
@@ -63,13 +59,6 @@
       <mat-form-field color="accent">
         <input matInput #input class="form-control" placeholder="Telefon No" [(ngModel)]="data.telefonNo"
                name="telefonNo" required>
-        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-      </mat-form-field>
-    </div>
-    <div class="form">
-      <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Durum" [(ngModel)]="data.durum"
-               name="durum" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>

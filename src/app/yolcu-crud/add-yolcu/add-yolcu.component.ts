@@ -13,7 +13,6 @@ import {Cinsiyet} from '../../_enums';
 })
 export class AddYolcuComponent implements OnInit {
   countries;
-  groups;
   genders = this.enumSelector(Cinsiyet);
 
   constructor(public addYolcuRef: MatDialogRef<AddYolcuComponent>,
@@ -30,7 +29,6 @@ export class AddYolcuComponent implements OnInit {
 
   ngOnInit() {
     this.loadAllCountries();
-    this.loadAllGrup();
   }
 
   enumSelector(definition) {
@@ -41,12 +39,6 @@ export class AddYolcuComponent implements OnInit {
   loadAllCountries() {
     this.placeService.getAllCountries().pipe(first()).subscribe(results => {
       this.countries = results;
-    });
-  }
-
-  loadAllGrup() {
-    this.grupService.getAllGrup().pipe(first()).subscribe(results => {
-      this.groups = results;
     });
   }
 

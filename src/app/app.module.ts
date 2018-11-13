@@ -44,6 +44,7 @@ import {AddGrupComponent} from './grup-crud/add-grup/add-grup.component';
 import {AddSeferComponent} from './sefer-crud/add-sefer/add-sefer.component';
 import {UpdateSeferComponent} from './sefer-crud/update-sefer/update-sefer.component';
 import {AktifSeferComponent} from './sefer-crud/aktif-sefer/aktif-sefer.component';
+import { SendYolcuUdhbComponent } from './yolcu-crud/send-yolcu-udhb/send-yolcu-udhb.component';
 
 @NgModule({
   imports: [
@@ -99,7 +100,8 @@ import {AktifSeferComponent} from './sefer-crud/aktif-sefer/aktif-sefer.componen
     AddSeferComponent,
     UpdateSeferComponent,
     IptalSeferComponent,
-    AktifSeferComponent
+    AktifSeferComponent,
+    SendYolcuUdhbComponent
   ],
   entryComponents: [
     AddPersonelComponent,
@@ -118,7 +120,8 @@ import {AktifSeferComponent} from './sefer-crud/aktif-sefer/aktif-sefer.componen
     AddSeferComponent,
     UpdateSeferComponent,
     IptalSeferComponent,
-    AktifSeferComponent
+    AktifSeferComponent,
+    SendYolcuUdhbComponent
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

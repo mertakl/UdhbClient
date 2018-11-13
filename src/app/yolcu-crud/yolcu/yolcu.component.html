@@ -54,18 +54,22 @@
       <!-- actions -->
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef>
-          <button mat-icon-button color="primary" (click)="addYolcu()">
+          <button mat-icon-button color="primary" matTooltip="Yolcu Ekle" (click)="addYolcu()">
             <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
           </button>
         </mat-header-cell>
-        <mat-cell *matCellDef="let row;">
-          <button mat-icon-button color="accent"
+        <mat-cell *matCellDef="let yolcu;">
+          <button mat-icon-button color="accent" matTooltip="Yolcu Güncelle"
                   (click)="updateYolcu(yolcu.id, yolcu.uetdsYolcuRefNo, yolcu.uyrukUlke.countryName, yolcu.cinsiyet, yolcu.tcKimlikPasaportNo,
                   yolcu.adi, yolcu.soyadi, yolcu.koltukNo, yolcu.telefonNo)">
             <mat-icon aria-label="Edit">edit</mat-icon>
           </button>
-          <button mat-icon-button color="accent" (click)="deleteYolcu(yolcu.id, yolcu.uetdsYolcuRefNo)">
+          <button mat-icon-button color="accent" matTooltip="Yolcu İptal"
+                  (click)="deleteYolcu(yolcu.id, yolcu.uetdsYolcuRefNo, yolcu.adi, yolcu.soyadi)">
             <mat-icon aria-label="Delete">delete</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" matTooltip="Bakanlığa Gönder" (click)="sendYolcuToUdhb(yolcu.id, yolcu.uetdsYolcuRefNo)">
+            <mat-icon aria-label="Send">send</mat-icon>
           </button>
         </mat-cell>
       </ng-container>
