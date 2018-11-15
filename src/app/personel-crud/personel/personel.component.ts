@@ -20,7 +20,8 @@ export class PersonelComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource;
-  displayedColumns: string[] = ['turKodu', 'uyrukUlke', 'tcKimlikPasaportNo', 'cinsiyet', 'adi', 'soyadi', 'telefon', 'adres', 'actions'];
+  displayedColumns: string[] = ['id', 'turKodu', 'uyrukUlke', 'tcKimlikPasaportNo',
+    'cinsiyet', 'adi', 'soyadi', 'telefon', 'adres', 'actions'];
 
   constructor(private personelService: PersonelService, public dialog: MatDialog) {
   }
@@ -53,9 +54,19 @@ export class PersonelComponent implements OnInit {
     });
   }
 
-  updatePersonel() {
+  updatePersonel(id: number, uyrukUlke: string, tcKimlikPasaportNo: string, adi: string,
+                 soyadi: string, cinsiyet: string, telefon: string, adres: string) {
     const dialogRef = this.dialog.open(UpdatePersonelComponent, {
-      data: {}
+      data: {
+        id: id,
+        uyrukUlke: uyrukUlke,
+        tcKimlikPasaportNo: tcKimlikPasaportNo,
+        adi: adi,
+        soyadi: soyadi,
+        cinsiyet: cinsiyet,
+        telefon: telefon,
+        adres: adres
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -65,9 +76,13 @@ export class PersonelComponent implements OnInit {
     });
   }
 
-  deletePersonel() {
+  deletePersonel(id: number, adi: string, soyadi: string) {
     const dialogRef = this.dialog.open(DeletePersonelComponent, {
-      data: {}
+      data: {
+        id: id,
+        adi: adi,
+        soyadi: soyadi
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -80,5 +95,4 @@ export class PersonelComponent implements OnInit {
   private refreshTable() {
     this.paginator._changePageSize(this.paginator.pageSize);
   }
-
 }

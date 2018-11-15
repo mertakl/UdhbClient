@@ -68,13 +68,13 @@
             <mat-icon aria-label="Delete">delete</mat-icon>
           </button>
           <button mat-icon-button color="accent" matTooltip="Sefer Akfif Et"
-                  (click)="activeSefer(sefer.id, sefer.uetdsSeferReferansNo)">
+                  (click)="activeSefer(sefer.id, sefer.uetdsSeferReferansNo, sefer.durum)">
             <mat-icon aria-label="Active">done_outline</mat-icon>
           </button>
         </mat-cell>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (dblclick)="showDetails(row)"></tr>
     </table>
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>

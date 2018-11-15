@@ -3,6 +3,8 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {User} from '../../_models';
 import {UserService} from '../../_services';
 import {FormControl, Validators} from '@angular/forms';
+import {Cinsiyet, RoleName} from '../../_enums';
+import {UtilService} from '../../_utils';
 
 @Component({
   selector: 'app-add-user',
@@ -13,8 +15,11 @@ export class AddUserComponent implements OnInit {
 
   constructor(public addUserRef: MatDialogRef<AddUserComponent>,
               @Inject(MAT_DIALOG_DATA) public data: User,
-              public userService: UserService) {
+              public userService: UserService,
+              public service: UtilService) {
   }
+
+  roles = this.service.enumSelector(RoleName);
 
   formControl = new FormControl('', [
     Validators.required
@@ -25,8 +30,7 @@ export class AddUserComponent implements OnInit {
 
   getErrorMessage() {
     return this.formControl.hasError('required') ? 'Required field' :
-      this.formControl.hasError('email') ? 'Not a valid email' :
-        '';
+      '';
   }
 
   onNoClick(): void {

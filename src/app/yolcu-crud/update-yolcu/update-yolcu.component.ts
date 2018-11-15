@@ -1,12 +1,12 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {AddGrupComponent} from '../../grup-crud/add-grup/add-grup.component';
-import {Grup, Yolcu} from '../../_models';
-import {GrupService, PlaceService, SeferService, YolcuService} from '../../_services';
+import {Yolcu} from '../../_models';
+import {PlaceService, SeferService, YolcuService} from '../../_services';
 import {FormControl, Validators} from '@angular/forms';
 import {first} from 'rxjs/operators';
 import {AddYolcuComponent} from '../add-yolcu/add-yolcu.component';
 import {Cinsiyet} from '../../_enums';
+import {UtilService} from '../../_utils';
 
 @Component({
   selector: 'app-update-yolcu',
@@ -15,24 +15,19 @@ import {Cinsiyet} from '../../_enums';
 })
 export class UpdateYolcuComponent implements OnInit {
 
-  countries;
-  genders = this.enumSelector(Cinsiyet);
-
   constructor(public addYolcuRef: MatDialogRef<AddYolcuComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Yolcu,
               public yolcuService: YolcuService,
               public placeService: PlaceService,
-              public grupService: GrupService) {
+              public service: UtilService) {
   }
+
+  countries;
+  genders = this.service.enumSelector(Cinsiyet);
 
   formControl = new FormControl('', [
     Validators.required
   ]);
-
-  enumSelector(definition) {
-    return Object.keys(definition)
-      .map(key => ({value: definition[key], title: key}));
-  }
 
   ngOnInit() {
     this.loadAllCountries();
@@ -46,15 +41,14 @@ export class UpdateYolcuComponent implements OnInit {
 
   getErrorMessage() {
     return this.formControl.hasError('required') ? 'Required field' :
-      this.formControl.hasError('email') ? 'Not a valid email' :
-        '';
+      '';
   }
 
   onNoClick(): void {
     this.addYolcuRef.close();
   }
 
-  public confirmAdd(): void {
+  public stopEdit(): void {
     this.yolcuService.updateYolcu(this.data);
   }
 

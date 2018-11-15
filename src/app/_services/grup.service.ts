@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {Grup, Sefer} from '../_models';
+import {Grup, Sefer} from '../_models/index';
 import {environment} from '../../environments/environment';
 import {BehaviorSubject} from 'rxjs';
-import {MatSnackBar} from '@angular/material';
+import {UtilService} from '../_utils/util';
 
 @Injectable({
   providedIn: 'root'
@@ -12,26 +12,21 @@ export class GrupService {
   dataChange: BehaviorSubject<Sefer[]> = new BehaviorSubject<Sefer[]>([]);
   dialogData: any;
 
-  constructor(private http: HttpClient, public snackBar: MatSnackBar) {
+  constructor(private http: HttpClient, public service: UtilService) {
   }
 
   getAllGrup() {
     return this.http.get<Grup[]>(`${environment.apiUrl}/udhb/gruplar`);
   }
 
-  openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 2000,
-    });
-  }
 
   addGrup(grup: Grup) {
     this.http.post(`${environment.apiUrl}/udhb/seferGrupEkle`, grup).subscribe(result => {
         this.dialogData = grup;
-        this.openSnackBar(result.toString(), 'Add');
+        this.service.openSnackBar(result.toString(), 'Add');
       },
       (err: HttpErrorResponse) => {
-        this.openSnackBar(err.toString(), 'Add');
+        this.service.openSnackBar(err.toString(), 'Add');
       });
   }
 
@@ -39,14 +34,11 @@ export class GrupService {
   updateGrup(grup: Grup) {
     this.http.put(`${environment.apiUrl}/udhb/seferGrupGuncelle`, grup).subscribe(result => {
         this.dialogData = grup;
-        this.openSnackBar(result.toString(), 'Update');
+        this.service.openSnackBar(result.toString(), 'Update');
       },
       (err: HttpErrorResponse) => {
-        this.openSnackBar(err.toString(), 'Update');
+        this.service.openSnackBar(err.toString(), 'Update');
       });
   }
 
-  deleteGrup(id: number) {
-    return this.http.delete(`${environment.apiUrl}/udhb/grupSil` + id);
-  }
 }

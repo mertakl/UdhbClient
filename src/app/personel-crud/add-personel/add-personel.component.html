@@ -1,23 +1,21 @@
 <div class="container">
-  <h3 mat-dialog-title>Add new Issue</h3>
+  <h3 mat-dialog-title>Personel Ekle</h3>
 
   <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
-
     <div class="form">
-      <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Id" [(ngModel)]="data.id" name="id" required>
-        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-      </mat-form-field>
+      <mat-select placeholder="Tur Kodu" [(ngModel)]="data.turKodu" name="turKodu">
+        <mat-option *ngFor="let t of tours" [value]="t.title">
+          {{ t.value }}
+        </mat-option>
+      </mat-select>
     </div>
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Tur Kodu" [(ngModel)]="data.turKodu" name="turKodu" required>
-        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-      </mat-form-field>
-    </div>
-    <div class="form">
-      <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Uyruk Ülke" [(ngModel)]="data.uyrukUlke" name="uyrukUlke" required>
+        <mat-select placeholder="Uyruk Ülke" name="uyrukUlke"
+                    [(ngModel)]="data.uyrukUlke" required>
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let country  of countries" [value]="country">{{country.countryName}}</mat-option>
+        </mat-select>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
@@ -28,10 +26,11 @@
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Cinsiyet" [(ngModel)]="data.cinsiyet" name="cinsiyet" required>
-        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-      </mat-form-field>
+      <mat-select placeholder="Cinsiyet" [(ngModel)]="data.cinsiyet" name="cinsiyet">
+        <mat-option *ngFor="let g of genders" [value]="g.title">
+          {{ g.value }}
+        </mat-option>
+      </mat-select>
     </div>
     <div class="form">
       <mat-form-field color="accent">
@@ -53,15 +52,16 @@
     </div>
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Adres" [(ngModel)]="data.adres" name="adres" required>
+        <textarea matInput #input class="form-control" placeholder="Adres" [(ngModel)]="data.adres"
+                  name="adres" required></textarea>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
     <div mat-dialog-actions>
       <button mat-button [type]="submit" [disabled]="!formControl.valid" mat-dialog-close="1" (click)="confirmAdd()">
-        Save
+        Kaydet
       </button>
-      <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">Vazgeç</button>
     </div>
   </form>
 </div>

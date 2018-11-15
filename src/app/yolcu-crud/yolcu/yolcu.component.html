@@ -11,10 +11,6 @@
         <th mat-header-cell *matHeaderCellDef> Id</th>
         <td mat-cell *matCellDef="let yolcu"> {{yolcu.id}}</td>
       </ng-container>
-      <ng-container matColumnDef="uetdsGrupRefNo">
-        <th mat-header-cell *matHeaderCellDef> Uetds Grup Ref No</th>
-        <td mat-cell *matCellDef="let yolcu"> {{yolcu.grup.uetdsGrupRefNo}}</td>
-      </ng-container>
       <ng-container matColumnDef="uetdsYolcuRefNo">
         <th mat-header-cell *matHeaderCellDef> Uetds Yolcu Ref No</th>
         <td mat-cell *matCellDef="let yolcu"> {{yolcu.uetdsYolcuRefNo}}</td>
@@ -64,12 +60,9 @@
                   yolcu.adi, yolcu.soyadi, yolcu.koltukNo, yolcu.telefonNo)">
             <mat-icon aria-label="Edit">edit</mat-icon>
           </button>
-          <button mat-icon-button color="accent" matTooltip="Yolcu İptal"
-                  (click)="deleteYolcu(yolcu.id, yolcu.uetdsYolcuRefNo, yolcu.adi, yolcu.soyadi)">
+          <button mat-icon-button color="accent" matTooltip="Yolcu Sil"
+                  (click)="deleteYolcu(yolcu.id)">
             <mat-icon aria-label="Delete">delete</mat-icon>
-          </button>
-          <button mat-icon-button color="accent" matTooltip="Bakanlığa Gönder" (click)="sendYolcuToUdhb(yolcu.id, yolcu.uetdsYolcuRefNo)">
-            <mat-icon aria-label="Send">send</mat-icon>
           </button>
         </mat-cell>
       </ng-container>

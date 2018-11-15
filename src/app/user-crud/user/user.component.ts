@@ -21,7 +21,7 @@ export class UserComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource;
-  displayedColumns: string[] = ['first_name', 'last_name', 'username', 'email', 'roles', 'actions'];
+  displayedColumns: string[] = ['id', 'first_name', 'last_name', 'username', 'email', 'actions'];
 
   constructor(private userService: UserService, public dialog: MatDialog) {
   }
@@ -54,9 +54,15 @@ export class UserComponent implements OnInit {
     });
   }
 
-  updateUser() {
+  updateUser(id: number, first_name: string, last_name: string, username: string, email: string) {
     const dialogRef = this.dialog.open(UpdateUserComponent, {
-      data: {}
+      data: {
+        id: id,
+        first_name: first_name,
+        last_name: last_name,
+        username: username,
+        email: email
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -66,9 +72,13 @@ export class UserComponent implements OnInit {
     });
   }
 
-  deleteUser() {
+  deleteUser(id: number, first_name: string, last_name: string) {
     const dialogRef = this.dialog.open(DeleteUserComponent, {
-      data: {}
+      data: {
+        id: id,
+        first_name: first_name,
+        last_name: last_name
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {

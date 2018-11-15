@@ -1,8 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {Personel, Sefer} from '../../_models';
-import {PersonelService, SeferService} from '../../_services';
+import {Personel, Sefer, Yolcu} from '../../_models';
+import {GrupService, PersonelService, PlaceService, SeferService, YolcuService} from '../../_services';
 import {FormControl, Validators} from '@angular/forms';
+import {Cinsiyet, PersonelTuru} from '../../_enums';
+import {first} from 'rxjs/operators';
+import {UtilService} from '../../_utils';
 
 @Component({
   selector: 'app-add-personel',
@@ -13,20 +16,33 @@ export class AddPersonelComponent implements OnInit {
 
   constructor(public addPersonelRef: MatDialogRef<AddPersonelComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Personel,
-              public personelService: PersonelService) {
+              public personelService: PersonelService,
+              public placeService: PlaceService,
+              public service: UtilService) {
+
   }
+
+  countries;
+  tours = this.service.enumSelector(PersonelTuru);
+  genders = this.service.enumSelector(Cinsiyet);
 
   formControl = new FormControl('', [
     Validators.required
   ]);
 
   ngOnInit() {
+    this.loadAllCountries();
+  }
+
+  loadAllCountries() {
+    this.placeService.getAllCountries().pipe(first()).subscribe(results => {
+      this.countries = results;
+    });
   }
 
   getErrorMessage() {
     return this.formControl.hasError('required') ? 'Required field' :
-      this.formControl.hasError('email') ? 'Not a valid email' :
-        '';
+      '';
   }
 
   onNoClick(): void {

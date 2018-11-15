@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="form">
+    <mat-form-field floatPlaceholder="never" color="accent">
+      <input matInput type="text" (keyup)="applyFilter($event.target.value)" placeholder="Sorgula">
+    </mat-form-field>
+  </div>
+  <div>
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id</th>
+        <td mat-cell *matCellDef="let personel"> {{personel.id}}</td>
+      </ng-container>
+      <ng-container matColumnDef="uyrukUlke">
+        <th mat-header-cell *matHeaderCellDef> Uyruk Ulke</th>
+        <td mat-cell *matCellDef="let personel"> {{personel.uyrukUlke.countryName}}</td>
+      </ng-container>
+      <ng-container matColumnDef="last_name">
+        <th mat-header-cell *matHeaderCellDef> Tc Kimlik Pasaport No</th>
+        <td mat-cell *matCellDef="let personel"> {{personel.tcKimlikPasaportNo}}</td>
+      </ng-container>
+      <ng-container matColumnDef="adi">
+        <th mat-header-cell *matHeaderCellDef> Adı</th>
+        <td mat-cell *matCellDef="let personel"> {{personel.adi}}</td>
+      </ng-container>
+      <ng-container matColumnDef="soyadi">
+        <th mat-header-cell *matHeaderCellDef> Soyadı</th>
+        <td mat-cell *matCellDef="let personel"> {{personel.soyadi}}</td>
+      </ng-container>
+      <ng-container matColumnDef="tcKimlikPasaportNo">
+        <th mat-header-cell *matHeaderCellDef> Tc Kimlik/Pasaport No</th>
+        <td mat-cell *matCellDef="let personel"> {{personel.tcKimlikPasaportNo}}</td>
+      </ng-container>
+      <ng-container matColumnDef="cinsiyet">
+        <th mat-header-cell *matHeaderCellDef> Cinsiyet</th>
+        <td mat-cell *matCellDef="let personel"> {{personel.cinsiyet}}</td>
+      </ng-container>
+      <ng-container matColumnDef="telefon">
+        <th mat-header-cell *matHeaderCellDef> Telefon</th>
+        <td mat-cell *matCellDef="let personel"> {{personel.telefon}}</td>
+      </ng-container>
+      <ng-container matColumnDef="adres">
+        <th mat-header-cell *matHeaderCellDef> Adres</th>
+        <td mat-cell *matCellDef="let personel"> {{personel.adres}}</td>
+      </ng-container>
+      <ng-container matColumnDef="turKodu">
+        <th mat-header-cell *matHeaderCellDef> Tur Kodu</th>
+        <td mat-cell *matCellDef="let personel"> {{personel.turKodu}}</td>
+      </ng-container>
+      <!-- actions -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+          <button mat-icon-button color="primary" (click)="addPersonel()">
+            <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          </button>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let personel;">
+          <button mat-icon-button color="accent" (click)="iptalPersonel(personel.id, personel.adi, personel.soyadi)">
+            <mat-icon aria-label="Delete">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
+

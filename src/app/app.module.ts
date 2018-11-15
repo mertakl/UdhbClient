@@ -7,9 +7,7 @@ import {AppComponent} from './app.component';
 
 import {AlertComponent} from './_components';
 import {JwtInterceptor, ErrorInterceptor} from './_helpers';
-import {HomeComponent} from './home';
 import {LoginComponent} from './login';
-import {RegisterComponent} from './register';
 import {routing} from './app-routing.module';
 import {
   MAT_DATE_LOCALE, MatAutocompleteModule, MatButtonModule, MatCheckboxModule,
@@ -35,7 +33,6 @@ import {UpdateYolcuComponent} from './yolcu-crud/update-yolcu/update-yolcu.compo
 import {DeleteYolcuComponent} from './yolcu-crud/delete-yolcu/delete-yolcu.component';
 import {AddYolcuComponent} from './yolcu-crud/add-yolcu/add-yolcu.component';
 import {DeleteUserComponent} from './user-crud/delete-user/delete-user.component';
-import {DeleteGrupComponent} from './grup-crud/delete-grup/delete-grup.component';
 import {UpdateGrupComponent} from './grup-crud/update-grup/update-grup.component';
 import {UpdateUdhbKullaniciComponent} from './udhb-kullanici-crud/update-udhb-kullanici/update-udhb-kullanici.component';
 import {IptalSeferComponent} from './sefer-crud/iptal-sefer/iptal-sefer.component';
@@ -44,7 +41,12 @@ import {AddGrupComponent} from './grup-crud/add-grup/add-grup.component';
 import {AddSeferComponent} from './sefer-crud/add-sefer/add-sefer.component';
 import {UpdateSeferComponent} from './sefer-crud/update-sefer/update-sefer.component';
 import {AktifSeferComponent} from './sefer-crud/aktif-sefer/aktif-sefer.component';
-import { SendYolcuUdhbComponent } from './yolcu-crud/send-yolcu-udhb/send-yolcu-udhb.component';
+import { IptalYolcuComponent } from './grup-details-crud/iptal-yolcu/iptal-yolcu.component';
+import { IptalPersonelUdhbComponent } from './sefer-details-crud/iptal-personel-udhb/iptal-personel-udhb.component';
+import { AddPersonelUdhbComponent } from './sefer-details-crud/add-personel-udhb/add-personel-udhb.component';
+import {SeferDetailsComponent} from './sefer-details-crud/sefer-details/sefer-details.component';
+import {GrupDetailsComponent} from './grup-details-crud/grup-details/grup-details.component';
+import {AddYolcuGrupComponent} from './grup-details-crud/add-yolcu-grup/add-yolcu-grup.component';
 
 @NgModule({
   imports: [
@@ -74,9 +76,7 @@ import { SendYolcuUdhbComponent } from './yolcu-crud/send-yolcu-udhb/send-yolcu-
   declarations: [
     AppComponent,
     AlertComponent,
-    HomeComponent,
     LoginComponent,
-    RegisterComponent,
     NavigationComponent,
     SeferComponent,
     PersonelComponent,
@@ -95,13 +95,18 @@ import { SendYolcuUdhbComponent } from './yolcu-crud/send-yolcu-udhb/send-yolcu-
     UpdateUserComponent,
     UpdateUdhbKullaniciComponent,
     UpdateGrupComponent,
-    DeleteGrupComponent,
     AddGrupComponent,
     AddSeferComponent,
     UpdateSeferComponent,
     IptalSeferComponent,
     AktifSeferComponent,
-    SendYolcuUdhbComponent
+    IptalYolcuComponent,
+    IptalPersonelUdhbComponent,
+    AddPersonelUdhbComponent,
+    SeferDetailsComponent,
+    GrupDetailsComponent,
+    AddYolcuGrupComponent,
+    IptalYolcuComponent
   ],
   entryComponents: [
     AddPersonelComponent,
@@ -115,13 +120,16 @@ import { SendYolcuUdhbComponent } from './yolcu-crud/send-yolcu-udhb/send-yolcu-
     UpdateUserComponent,
     UpdateUdhbKullaniciComponent,
     UpdateGrupComponent,
-    DeleteGrupComponent,
     AddGrupComponent,
     AddSeferComponent,
     UpdateSeferComponent,
     IptalSeferComponent,
     AktifSeferComponent,
-    SendYolcuUdhbComponent
+    SeferDetailsComponent,
+    AddPersonelUdhbComponent,
+    GrupDetailsComponent,
+    AddYolcuGrupComponent,
+    IptalYolcuComponent
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

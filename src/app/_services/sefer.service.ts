@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
-import {Sefer, User} from '../_models';
+import {Sefer, User} from '../_models/index';
 import {environment} from '../../environments/environment';
 import {BehaviorSubject} from 'rxjs';
 import {MatSnackBar} from '@angular/material';
+import {UtilService} from '../_utils/index';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class SeferService {
   dataChange: BehaviorSubject<Sefer[]> = new BehaviorSubject<Sefer[]>([]);
   dialogData: any;
 
-  constructor(private http: HttpClient, public snackBar: MatSnackBar) {
+  constructor(private http: HttpClient, public service: UtilService) {
   }
 
   getDialogData() {
@@ -23,19 +24,13 @@ export class SeferService {
     return this.http.get<Sefer[]>(`${environment.apiUrl}/udhb/seferler`);
   }
 
-  openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 2000,
-    });
-  }
-
   addSefer(sefer: Sefer) {
     this.http.post(`${environment.apiUrl}/udhb/seferEkle`, sefer).subscribe(data => {
         this.dialogData = sefer;
-        this.openSnackBar(data.toString(), 'Add');
+        this.service.openSnackBar(data.toString(), 'Add');
       },
       (err: HttpErrorResponse) => {
-        this.openSnackBar(err.toString(), 'Add');
+        this.service.openSnackBar(err.toString(), 'Add');
       });
   }
 
@@ -43,10 +38,10 @@ export class SeferService {
     this.http.put(`${environment.apiUrl}/udhb/seferPlakaDegistir?id=` + sefer.id + '&uetdsSeferReferansNo='
       + sefer.uetdsSeferReferansNo + '&tasitPlakaNo=' + sefer.aracPlaka, null).subscribe(data => {
         this.dialogData = sefer;
-        this.openSnackBar(data.toString(), 'Update');
+        this.service.openSnackBar(data.toString(), 'Update');
       },
       (err: HttpErrorResponse) => {
-        this.openSnackBar(err.toString(), 'Update');
+        this.service.openSnackBar(err.toString(), 'Update');
       }
     );
   }
@@ -55,10 +50,10 @@ export class SeferService {
     this.http.post(`${environment.apiUrl}/udhb/seferIptal?id=` + sefer.id + '&uetdsSeferReferansNo='
       + sefer.uetdsSeferReferansNo + '&iptalAciklama=' + sefer.iptalAciklama, null).subscribe(data => {
         this.dialogData = sefer;
-        this.openSnackBar(data.toString(), 'Delete');
+        this.service.openSnackBar(data.toString(), 'Delete');
       },
       (err: HttpErrorResponse) => {
-        this.openSnackBar(err.toString(), 'Delete');
+        this.service.openSnackBar(err.toString(), 'Delete');
       }
     );
   }
@@ -67,10 +62,10 @@ export class SeferService {
     this.http.post(`${environment.apiUrl}/udhb/seferAktif?id=` + sefer.id + '&uetdsSeferReferansNo='
       + sefer.uetdsSeferReferansNo + '&aktifAciklama=' + sefer.aktifAciklama, null).subscribe(data => {
         this.dialogData = sefer;
-        this.openSnackBar(data.toString(), 'Active');
+        this.service.openSnackBar(data.toString(), 'Active');
       },
       (err: HttpErrorResponse) => {
-        this.openSnackBar(err.toString(), 'Active');
+        this.service.openSnackBar(err.toString(), 'Active');
       }
     );
   }

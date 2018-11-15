@@ -1,11 +1,13 @@
 <div class="container">
-  <h3 mat-dialog-title>Are you sure?</h3>
+  <h3 mat-dialog-title>Kullanıcıyı silmek istediğinize emin misiniz?</h3>
   <div mat-dialog-content>
-   Kullanıcı: {{data.first_name}}
+    Kullanıcı Adı: {{data.first_name}}
+    <p></p>
+    Kullanıcı Soyadı: {{data.last_name}}
     <p></p>
   </div>
   <div mat-dialog-actions>
-    <button mat-button mat-dialog-close="1" (click)="confirmDelete()">Delete</button>
-    <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    <button mat-button mat-dialog-close="1" (click)="confirmDelete()">Sil</button>
+    <button mat-button (click)="onNoClick()" tabindex="-1">İptal</button>
   </div>
 </div>

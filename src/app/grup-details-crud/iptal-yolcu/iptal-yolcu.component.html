@@ -1,0 +1,21 @@
+<div class="container">
+  <h3 mat-dialog-title>Yolcuyu iptal etmek istediğinize emin misiniz?</h3>
+  <div mat-dialog-content>
+    Yolcu Id: {{data.id}}
+    <p></p>
+    Yolcu Adı: {{data.adi}}
+    <p></p>
+    Yolcu Soyadı: {{data.soyadi}}
+    <p></p>
+  </div>
+  <div class="form">
+    <mat-form-field color="accent">
+        <textarea matInput #input class="form-control" placeholder="İptal Açıklama" [(ngModel)]="data.iptalAciklama"
+                  name="iptalAciklama" required></textarea>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close="1" (click)="confirmDelete()">Sil</button>
+    <button mat-button (click)="onNoClick()" tabindex="-1">Vazgeç</button>
+  </div>
+</div>

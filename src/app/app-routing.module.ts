@@ -1,8 +1,6 @@
 import {Routes, RouterModule} from '@angular/router';
-import {RegisterComponent} from './register';
 import {LoginComponent} from './login';
 import {AuthGuard} from './_guards';
-import {HomeComponent} from './home';
 
 import {GrupComponent} from './grup-crud/grup';
 import {SeferComponent} from './sefer-crud/sefer';
@@ -13,10 +11,8 @@ import {UserComponent} from './user-crud/user/user.component';
 
 
 const appRoutes: Routes = [
-  {path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'sefer', component: SeferComponent, canActivate: [AuthGuard]},
+  {path: '', component: SeferComponent, canActivate: [AuthGuard]},
   {path: 'grup', component: GrupComponent, canActivate: [AuthGuard]},
   {path: 'yolcu', component: YolcuComponent, canActivate: [AuthGuard]},
   {path: 'personel', component: PersonelComponent, canActivate: [AuthGuard]},

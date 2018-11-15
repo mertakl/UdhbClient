@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {Sefer, User} from '../../_models';
-import {SeferService, UserService} from '../../_services';
+import {User} from '../../_models';
+import {UserService} from '../../_services';
 import {FormControl, Validators} from '@angular/forms';
 
 @Component({

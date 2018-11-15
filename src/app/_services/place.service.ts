@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {City, Country, District, Personel} from '../_models';
+import {City, Country, District, Personel} from '../_models/index';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 

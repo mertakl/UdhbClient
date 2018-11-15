@@ -1,0 +1,22 @@
+<div class="container">
+  <h3 mat-dialog-title>Grup Yolcu Ekleme</h3>
+
+  <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+    <div class="form">
+      <mat-form-field color="accent">
+        <mat-select placeholder="Yolcu Listesi" name="yolcu"
+                    [(ngModel)]="data.yolcu" required>
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let yolcu  of yolcular" [value]="yolcu">{{yolcu.tcKimlikPasaportNo}} {{yolcu.adi}} {{yolcu.soyadi}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button [type]="submit" [disabled]="!formControl.valid" mat-dialog-close="1" (click)="confirmAdd()">
+        Kaydet
+      </button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">Vazgeç</button>
+    </div>
+  </form>
+</div>

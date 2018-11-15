@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SendYolcuUdhbComponent } from './send-yolcu-udhb.component';
+import { IptalPersonelUdhbComponent } from './iptal-personel-udhb.component';
 
-describe('SendYolcuUdhbComponent', () => {
-  let component: SendYolcuUdhbComponent;
-  let fixture: ComponentFixture<SendYolcuUdhbComponent>;
+describe('IptalPersonelUdhbComponent', () => {
+  let component: IptalPersonelUdhbComponent;
+  let fixture: ComponentFixture<IptalPersonelUdhbComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SendYolcuUdhbComponent ]
+      declarations: [ IptalPersonelUdhbComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SendYolcuUdhbComponent);
+    fixture = TestBed.createComponent(IptalPersonelUdhbComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

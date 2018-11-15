@@ -1,12 +1,18 @@
 ﻿import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {User} from '../_models';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {Sefer, User, Yolcu} from '../_models/index';
 import {environment} from '../../environments/environment';
+import {BehaviorSubject} from 'rxjs';
+import {UtilService} from '../_utils/index';
 
 
 @Injectable({providedIn: 'root'})
 export class UserService {
-  constructor(private http: HttpClient) {
+
+  dataChange: BehaviorSubject<Sefer[]> = new BehaviorSubject<Sefer[]>([]);
+  dialogData: any;
+
+  constructor(private http: HttpClient, public service: UtilService) {
   }
 
   getAllUser() {
@@ -14,11 +20,23 @@ export class UserService {
   }
 
   addUser(user: User) {
-    return this.http.post(`${environment.apiUrl}/api/auth/signup`, user);
+    this.http.post(`${environment.apiUrl}/api/auth/signup`, user).subscribe(data => {
+        this.dialogData = user;
+        this.service.openSnackBar(data.toString(), 'Add');
+      },
+      (err: HttpErrorResponse) => {
+        this.service.openSnackBar(err.toString(), 'Add');
+      });
   }
 
   updateUser(user: User) {
-    return this.http.put(`${environment.apiUrl}/api/auth/updateUser`, user);
+    this.http.put(`${environment.apiUrl}/api/auth/updateUser`, user).subscribe(result => {
+        this.dialogData = user;
+        this.service.openSnackBar(result.toString(), 'Update');
+      },
+      (err: HttpErrorResponse) => {
+        this.service.openSnackBar(err.toString(), 'Update');
+      });
   }
 
   deleteUser(id: number) {

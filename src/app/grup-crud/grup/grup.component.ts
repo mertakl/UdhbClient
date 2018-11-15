@@ -2,13 +2,10 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {first} from 'rxjs/operators';
 import {GrupService} from '../../_services';
-import {City, Country, District, Grup, User} from '../../_models';
-import {AddUserComponent} from '../../user-crud/add-user/add-user.component';
-import {UpdateUserComponent} from '../../user-crud/update-user/update-user.component';
-import {DeleteUserComponent} from '../../user-crud/delete-user/delete-user.component';
+import {Grup} from '../../_models';
 import {AddGrupComponent} from '../add-grup/add-grup.component';
 import {UpdateGrupComponent} from '../update-grup/update-grup.component';
-import {DeleteGrupComponent} from '../delete-grup/delete-grup.component';
+import {GrupDetailsComponent} from '../../grup-details-crud/grup-details/grup-details.component';
 
 @Component({
   selector: 'app-grup',
@@ -82,9 +79,9 @@ export class GrupComponent implements OnInit {
     });
   }
 
-  deleteGrup() {
-    const dialogRef = this.dialog.open(DeleteGrupComponent, {
-      data: {}
+  showDetails(row) {
+    const dialogRef = this.dialog.open(GrupDetailsComponent, {
+      data: {row: row}
     });
 
     dialogRef.afterClosed().subscribe(result => {

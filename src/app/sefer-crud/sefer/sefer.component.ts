@@ -7,6 +7,8 @@ import {AddSeferComponent} from '../add-sefer/add-sefer.component';
 import {UpdateSeferComponent} from '../update-sefer/update-sefer.component';
 import {IptalSeferComponent} from '../iptal-sefer/iptal-sefer.component';
 import {AktifSeferComponent} from '../aktif-sefer/aktif-sefer.component';
+import {SeferDetailsComponent} from '../../sefer-details-crud/sefer-details/sefer-details.component';
+import {UtilService} from '../../_utils';
 
 @Component({
   selector: 'app-sefer',
@@ -21,7 +23,7 @@ export class SeferComponent implements OnInit {
   displayedColumns: string[] = ['id', 'uetdsSeferReferansNo', 'aracPlaka', 'hareketTarihi', 'hareketSaati',
     'seferAciklama', 'aracTelefonu', 'firmaSeferNo', 'seferBitisTarihi', 'seferBitisSaati', 'durum', 'actions'];
 
-  constructor(private seferService: SeferService, public dialog: MatDialog) {
+  constructor(private seferService: SeferService, public dialog: MatDialog, public service: UtilService) {
   }
 
   ngOnInit() {
@@ -84,9 +86,25 @@ export class SeferComponent implements OnInit {
     });
   }
 
-  activeSefer(id: number, uetdsSeferReferansNo: number) {
-    const dialogRef = this.dialog.open(AktifSeferComponent, {
-      data: {id: id, uetdsSeferReferansNo: uetdsSeferReferansNo}
+  activeSefer(id: number, uetdsSeferReferansNo: number, durum: string) {
+    if (durum === 'PASIF') {
+      const dialogRef = this.dialog.open(AktifSeferComponent, {
+        data: {id: id, uetdsSeferReferansNo: uetdsSeferReferansNo}
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result === 1) {
+          this.refreshTable();
+        }
+      });
+    } else {
+      this.service.openSnackBar('Sefer zaten aktif durumda!', 'Warning');
+    }
+  }
+
+  showDetails(row) {
+    const dialogRef = this.dialog.open(SeferDetailsComponent, {
+      data: {row: row}
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -5,6 +5,7 @@ import {GrupService, PlaceService, SeferService, YolcuService} from '../../_serv
 import {FormControl, Validators} from '@angular/forms';
 import {first} from 'rxjs/operators';
 import {Cinsiyet} from '../../_enums';
+import {UtilService} from '../../_utils';
 
 @Component({
   selector: 'app-add-yolcu',
@@ -12,16 +13,17 @@ import {Cinsiyet} from '../../_enums';
   styleUrls: ['./add-yolcu.component.css']
 })
 export class AddYolcuComponent implements OnInit {
-  countries;
-  genders = this.enumSelector(Cinsiyet);
 
   constructor(public addYolcuRef: MatDialogRef<AddYolcuComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Yolcu,
               public yolcuService: YolcuService,
               public placeService: PlaceService,
-              public grupService: GrupService) {
+              public service: UtilService) {
 
   }
+
+  countries;
+  genders = this.service.enumSelector(Cinsiyet);
 
   formControl = new FormControl('', [
     Validators.required
@@ -29,11 +31,6 @@ export class AddYolcuComponent implements OnInit {
 
   ngOnInit() {
     this.loadAllCountries();
-  }
-
-  enumSelector(definition) {
-    return Object.keys(definition)
-      .map(key => ({value: definition[key], title: key}));
   }
 
   loadAllCountries() {
@@ -44,8 +41,7 @@ export class AddYolcuComponent implements OnInit {
 
   getErrorMessage() {
     return this.formControl.hasError('required') ? 'Required field' :
-      this.formControl.hasError('email') ? 'Not a valid email' :
-        '';
+      '';
   }
 
   onNoClick(): void {

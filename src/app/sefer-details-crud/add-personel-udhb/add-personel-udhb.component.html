@@ -1,0 +1,65 @@
+<div class="container">
+  <h3 mat-dialog-title>Add new Issue</h3>
+
+  <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Tur Kodu" [(ngModel)]="data.turKodu" name="turKodu" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field color="accent">
+        <mat-select placeholder="Uyruk Ülke" name="uyrukUlke"
+                    [(ngModel)]="data.uyrukUlke" required>
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let country  of countries" [value]="country">{{country.countryName}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Tc Kimlik Pasaport No" [(ngModel)]="data.tcKimlikPasaportNo" name="tcKimlikPasaportNo" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-select placeholder="Cinsiyet" [(ngModel)]="data.cinsiyet" name="cinsiyet">
+        <mat-option *ngFor="let g of genders" [value]="g.title">
+          {{ g.value }}
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Adı" [(ngModel)]="data.adi" name="adi" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Soyadı" [(ngModel)]="data.soyadi" name="soyadi" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Telefon" [(ngModel)]="data.telefon" name="telefon" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Adres" [(ngModel)]="data.adres" name="adres" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button [type]="submit" [disabled]="!formControl.valid" mat-dialog-close="1" (click)="confirmAdd()">
+        Kaydet
+      </button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">Vazgeç</button>
+    </div>
+  </form>
+</div>
