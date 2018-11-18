@@ -3,21 +3,21 @@
 
   <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <input matInput #input class="form-control" placeholder="Grup Adı"
                [(ngModel)]="data.grupAdi" name="grupAdi" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
        <textarea matInput #input class="form-control" placeholder="Grup Açıklama" [(ngModel)]="data.grupAciklama"
                  name="grupAciklama" required></textarea>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <mat-select placeholder="Başlangıç Ülke" name="baslangicUlke" (selectionChange)="loadAllCities($event.value.id)"
                     [(ngModel)]="data.baslangicUlke"
                     required>
@@ -28,7 +28,7 @@
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <mat-select placeholder="Başlangıç İl" name="baslangicIl" (selectionChange)="loadAllDistricts($event.value.id)"
                     [(ngModel)]="data.baslangicIl"
                     required>
@@ -39,7 +39,7 @@
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <mat-select placeholder="Başlangıç İlçe" name="baslangicIlce" [(ngModel)]="data.baslangicIlce" required>
           <mat-option>None</mat-option>
           <mat-option *ngFor="let district  of districts" [value]="district">{{district.districtName}}
@@ -49,14 +49,14 @@
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <input matInput #input class="form-control" placeholder="Başlangıç Yer"
                [(ngModel)]="data.baslangicYer" name="baslangicYer" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <mat-select placeholder="Bitiş Ülke" name="bitisUlke" (selectionChange)="loadAllCities($event.value.id)"
                     [(ngModel)]="data.bitisUlke" required>
           <mat-option>None</mat-option>
@@ -66,7 +66,7 @@
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <mat-select placeholder="Bitiş İl" name="bitisIl" (selectionChange)="loadAllDistricts($event.value.id)" [(ngModel)]="data.bitisIl" required>
           <mat-option>None</mat-option>
           <mat-option *ngFor="let city  of cities" [value]="city">{{city.cityName}}</mat-option>
@@ -75,7 +75,7 @@
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <mat-select placeholder="Bitiş İlçe" name="bitisIlce" [(ngModel)]="data.bitisIlce" required>
           <mat-option>None</mat-option>
           <mat-option *ngFor="let district  of districts" [value]="district">{{district.districtName}}
@@ -85,15 +85,15 @@
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <input matInput #input class="form-control" placeholder="Bitiş Yer"
                [(ngModel)]="data.bitisYer" name="bitisYer" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
-        <mat-select placeholder="Sefer" name="sefer" (selectionChange)="loadAllSefer($event.value)"  [(ngModel)]="data.sefer" required>
+      <mat-form-field color="primary">
+        <mat-select placeholder="Sefer" name="sefer" (selectionChange)="loadAllSefer()"  [(ngModel)]="data.sefer" required>
           <mat-option>None</mat-option>
           <mat-option *ngFor="let travel of travels" [value]="travel">{{travel.uetdsSeferReferansNo}}</mat-option>
         </mat-select>

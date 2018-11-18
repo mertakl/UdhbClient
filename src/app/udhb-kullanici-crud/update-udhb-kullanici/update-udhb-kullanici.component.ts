@@ -11,6 +11,7 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class UpdateUdhbKullaniciComponent implements OnInit {
 
+  submit: any;
   constructor(public udhbKullaniciRef: MatDialogRef<UpdateUdhbKullaniciComponent>,
               @Inject(MAT_DIALOG_DATA) public data: UdhbKullanici, public udhbKullaniciService: UdhbKullaniciService) {
   }

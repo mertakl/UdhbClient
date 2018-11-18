@@ -10,7 +10,7 @@
       </mat-select>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <mat-select placeholder="Uyruk Ülke" name="uyrukUlke"
                     [(ngModel)]="data.uyrukUlke" required>
           <mat-option>None</mat-option>
@@ -20,7 +20,7 @@
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <input matInput #input class="form-control" placeholder="Tc Kimlik Pasaport No" [(ngModel)]="data.tcKimlikPasaportNo" name="tcKimlikPasaportNo" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
@@ -33,25 +33,25 @@
       </mat-select>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <input matInput #input class="form-control" placeholder="Adı" [(ngModel)]="data.adi" name="adi" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <input matInput #input class="form-control" placeholder="Soyadı" [(ngModel)]="data.soyadi" name="soyadi" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <input matInput #input class="form-control" placeholder="Telefon" [(ngModel)]="data.telefon" name="telefon" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <textarea matInput #input class="form-control" placeholder="Adres" [(ngModel)]="data.adres"
                   name="adres" required></textarea>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>

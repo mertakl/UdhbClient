@@ -54,3 +54,7 @@ th.mat-header-cell {
 .mat-cell{
   width: 150px;
 }
+
+.mat-row:hover {
+  background-color: rgba(60, 63, 65, 0.21);
+}

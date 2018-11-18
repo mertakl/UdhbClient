@@ -3,13 +3,13 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {PersonelService} from '../../_services';
 
 @Component({
-  selector: 'app-iptal-personel-udhb',
-  templateUrl: './iptal-personel-udhb.component.html',
-  styleUrls: ['./iptal-personel-udhb.component.css']
+  selector: 'app-iptal-personel-sefer',
+  templateUrl: './iptal-personel-sefer.component.html',
+  styleUrls: ['./iptal-personel-sefer.component.css']
 })
-export class IptalPersonelUdhbComponent implements OnInit {
+export class IptalPersonelSeferComponent implements OnInit {
 
-  constructor(public personelRef: MatDialogRef<IptalPersonelUdhbComponent>,
+  constructor(public personelRef: MatDialogRef<IptalPersonelSeferComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any, public personelService: PersonelService) {
   }
 
@@ -18,7 +18,7 @@ export class IptalPersonelUdhbComponent implements OnInit {
   }
 
   confirmDelete(): void {
-    this.personelService.deletePersonel(this.data.id);
+    this.personelService.iptalPersonel(this.data.id, this.data.iptalAciklama);
   }
 
   ngOnInit() {

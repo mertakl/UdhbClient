@@ -11,6 +11,8 @@ import {SeferService} from '../../_services';
 })
 export class AddSeferComponent implements OnInit {
 
+  submit: any;
+
   constructor(public addSeferRef: MatDialogRef<AddSeferComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Sefer,
               public seferService: SeferService) {

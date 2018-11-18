@@ -1,7 +1,7 @@
 <app-navigation></app-navigation>
 <div class="container">
   <div class="form">
-    <mat-form-field floatPlaceholder="never" color="accent">
+    <mat-form-field floatPlaceholder="never" color="primary">
       <input matInput type="text" (keyup)="applyFilter($event.target.value)" placeholder="Sorgula">
     </mat-form-field>
   </div>
@@ -59,15 +59,15 @@
           </button>
         </mat-header-cell>
         <mat-cell *matCellDef="let sefer;">
-          <button mat-icon-button color="accent" matTooltip="Sefer Araç Plaka Güncelle"
+          <button mat-icon-button color="primary" matTooltip="Sefer Araç Plaka Güncelle"
                   (click)="updateSefer(sefer.id, sefer.uetdsSeferReferansNo, sefer.aracPlaka, sefer.hareketTarihi, sefer.hareketSaati,sefer.seferAciklama, sefer.aracTelefonu, sefer.firmaSeferNo, sefer.seferBitisTarihi, sefer.seferBitisSaati)">
             <mat-icon aria-label="Edit">edit</mat-icon>
           </button>
-          <button mat-icon-button color="accent" matTooltip="Sefer İptal"
+          <button mat-icon-button color="primary" matTooltip="Sefer İptal"
                   (click)="deleteSefer(sefer.id, sefer.uetdsSeferReferansNo)">
             <mat-icon aria-label="Delete">delete</mat-icon>
           </button>
-          <button mat-icon-button color="accent" matTooltip="Sefer Akfif Et"
+          <button mat-icon-button color="primary" matTooltip="Sefer Akfif Et"
                   (click)="activeSefer(sefer.id, sefer.uetdsSeferReferansNo, sefer.durum)">
             <mat-icon aria-label="Active">done_outline</mat-icon>
           </button>

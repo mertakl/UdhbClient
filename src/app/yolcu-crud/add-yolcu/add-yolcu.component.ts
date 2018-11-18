@@ -23,6 +23,7 @@ export class AddYolcuComponent implements OnInit {
   }
 
   countries;
+  submit: any;
   genders = this.service.enumSelector(Cinsiyet);
 
   formControl = new FormControl('', [

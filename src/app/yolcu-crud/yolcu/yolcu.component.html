@@ -1,7 +1,7 @@
 <app-navigation></app-navigation>
 <div class="container">
   <div class="form">
-    <mat-form-field floatPlaceholder="never" color="accent">
+    <mat-form-field floatPlaceholder="never" color="primary">
       <input matInput type="text" (keyup)="applyFilter($event.target.value)" placeholder="Sorgula">
     </mat-form-field>
   </div>
@@ -55,12 +55,12 @@
           </button>
         </mat-header-cell>
         <mat-cell *matCellDef="let yolcu;">
-          <button mat-icon-button color="accent" matTooltip="Yolcu Güncelle"
+          <button mat-icon-button color="primary" matTooltip="Yolcu Güncelle"
                   (click)="updateYolcu(yolcu.id, yolcu.uetdsYolcuRefNo, yolcu.uyrukUlke.countryName, yolcu.cinsiyet, yolcu.tcKimlikPasaportNo,
                   yolcu.adi, yolcu.soyadi, yolcu.koltukNo, yolcu.telefonNo)">
             <mat-icon aria-label="Edit">edit</mat-icon>
           </button>
-          <button mat-icon-button color="accent" matTooltip="Yolcu Sil"
+          <button mat-icon-button color="primary" matTooltip="Yolcu Sil"
                   (click)="deleteYolcu(yolcu.id)">
             <mat-icon aria-label="Delete">delete</mat-icon>
           </button>

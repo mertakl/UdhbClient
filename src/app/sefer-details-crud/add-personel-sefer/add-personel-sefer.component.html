@@ -1,13 +1,14 @@
 <div class="container">
-  <h3 mat-dialog-title>Grup Yolcu Ekleme</h3>
+  <h3 mat-dialog-title>Sefere personel ekle</h3>
 
   <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
     <div class="form">
       <mat-form-field color="primary">
-        <mat-select placeholder="Yolcu Listesi" name="yolcu"
-                    [(ngModel)]="data.yolcu" required>
+        <mat-select placeholder="Personel" name="personel"
+                    [(ngModel)]="data.personel" required>
           <mat-option>None</mat-option>
-          <mat-option *ngFor="let yolcu  of yolcular" [value]="yolcu">{{yolcu.tcKimlikPasaportNo}} {{yolcu.adi}} {{yolcu.soyadi}}</mat-option>
+          <mat-option *ngFor="let personel  of personels" [value]="personel.id">{{personel.adi}} {{personel.soyadi}}
+          </mat-option>
         </mat-select>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>

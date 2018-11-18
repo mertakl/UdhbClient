@@ -13,7 +13,8 @@ export class SeferService {
   dataChange: BehaviorSubject<Sefer[]> = new BehaviorSubject<Sefer[]>([]);
   dialogData: any;
 
-  constructor(private http: HttpClient, public service: UtilService) {
+  constructor(private http: HttpClient,
+              public service: UtilService) {
   }
 
   getDialogData() {

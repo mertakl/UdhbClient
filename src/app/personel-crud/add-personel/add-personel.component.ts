@@ -23,6 +23,7 @@ export class AddPersonelComponent implements OnInit {
   }
 
   countries;
+  submit: any;
   tours = this.service.enumSelector(PersonelTuru);
   genders = this.service.enumSelector(Cinsiyet);
 

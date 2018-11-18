@@ -22,6 +22,7 @@ export class AddYolcuGrupComponent implements OnInit {
   }
 
   yolcular;
+  submit: any;
   genders = this.service.enumSelector(Cinsiyet);
 
   formControl = new FormControl('', [

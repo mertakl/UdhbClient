@@ -1,7 +1,7 @@
 <app-navigation></app-navigation>
 <div class="container">
   <div class="form">
-    <mat-form-field floatPlaceholder="never" color="accent">
+    <mat-form-field floatPlaceholder="never" color="primary">
       <input matInput type="text" (keyup)="applyFilter($event.target.value)" placeholder="Sorgula">
     </mat-form-field>
   </div>
@@ -55,11 +55,11 @@
           </button>
         </mat-header-cell>
         <mat-cell *matCellDef="let personel;">
-          <button mat-icon-button color="accent"
+          <button mat-icon-button color="primary"
                   (click)="updatePersonel(personel.id, personel.uyrukUlke, personel.tcKimlikPasaportNo, personel.cinsiyet, personel.telefon, personel.adres, personel.turKodu)">
             <mat-icon aria-label="Edit">edit</mat-icon>
           </button>
-          <button mat-icon-button color="accent" (click)="deletePersonel(personel.id, personel.adi, personel.soyadi)">
+          <button mat-icon-button color="primary" (click)="deletePersonel(personel.id, personel.adi, personel.soyadi)">
             <mat-icon aria-label="Delete">delete</mat-icon>
           </button>
         </mat-cell>

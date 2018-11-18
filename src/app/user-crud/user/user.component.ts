@@ -3,11 +3,7 @@ import {first} from 'rxjs/operators';
 import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {UserService} from '../../_services';
 import {User, Yolcu} from '../../_models';
-import {AddYolcuComponent} from '../../yolcu-crud/add-yolcu/add-yolcu.component';
-import {UpdateYolcuComponent} from '../../yolcu-crud/update-yolcu/update-yolcu.component';
-import {DeleteYolcuComponent} from '../../yolcu-crud/delete-yolcu/delete-yolcu.component';
 import {AddUserComponent} from '../add-user/add-user.component';
-import {UpdateUserComponent} from '../update-user/update-user.component';
 import {DeleteUserComponent} from '../delete-user/delete-user.component';
 
 
@@ -48,27 +44,7 @@ export class UserComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        this.refreshTable();
-      }
-    });
-  }
-
-  updateUser(id: number, first_name: string, last_name: string, username: string, email: string) {
-    const dialogRef = this.dialog.open(UpdateUserComponent, {
-      data: {
-        id: id,
-        first_name: first_name,
-        last_name: last_name,
-        username: username,
-        email: email
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        this.refreshTable();
-      }
+      this.loadAllUsers();
     });
   }
 
@@ -82,13 +58,8 @@ export class UserComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        this.refreshTable();
-      }
+      this.loadAllUsers();
     });
   }
 
-  private refreshTable() {
-    this.paginator._changePageSize(this.paginator.pageSize);
-  }
 }

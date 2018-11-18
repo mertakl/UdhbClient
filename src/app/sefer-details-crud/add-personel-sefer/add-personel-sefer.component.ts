@@ -8,34 +8,34 @@ import {FormControl, Validators} from '@angular/forms';
 import {first} from 'rxjs/operators';
 
 @Component({
-  selector: 'app-add-personel-udhb',
-  templateUrl: './add-personel-udhb.component.html',
-  styleUrls: ['./add-personel-udhb.component.css']
+  selector: 'app-add-personel-sefer',
+  templateUrl: './add-personel-sefer.component.html',
+  styleUrls: ['./add-personel-sefer.component.css']
 })
-export class AddPersonelUdhbComponent implements OnInit {
+export class AddPersonelSeferComponent implements OnInit {
 
-  constructor(public addPersonelRef: MatDialogRef<AddPersonelUdhbComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: Personel,
+  constructor(public addPersonelRef: MatDialogRef<AddPersonelSeferComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any,
               public personelService: PersonelService,
               public placeService: PlaceService,
               public service: UtilService) {
 
   }
 
-  countries;
-  genders = this.service.enumSelector(Cinsiyet);
+  personels;
+  submit: any;
 
   formControl = new FormControl('', [
     Validators.required
   ]);
 
   ngOnInit() {
-    this.loadAllCountries();
+    this.loadAllPersonelWithoutSeferIds(this.data.seferId);
   }
 
-  loadAllCountries() {
-    this.placeService.getAllCountries().pipe(first()).subscribe(results => {
-      this.countries = results;
+  loadAllPersonelWithoutSeferIds(seferId: number) {
+    this.personelService.getAllPersonelWithoutSeferId(seferId).pipe(first()).subscribe(results => {
+      this.personels = results;
     });
   }
 
@@ -49,7 +49,7 @@ export class AddPersonelUdhbComponent implements OnInit {
   }
 
   public confirmAdd(): void {
-    this.personelService.addPersonel(this.data);
+    this.personelService.addPersonelSefer(this.data.personel, this.data.seferId);
   }
 
 }

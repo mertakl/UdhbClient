@@ -18,10 +18,10 @@ export class UdhbKullaniciComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadAllSefer();
+    this.loadAllKullanici();
   }
 
-  private loadAllSefer() {
+  private loadAllKullanici() {
     this.udhbKullaniciService.getAllKullanici().pipe(first()).subscribe(results => {
       this.dataSource = new MatTableDataSource(results);
     });
@@ -33,8 +33,7 @@ export class UdhbKullaniciComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-      }
+      this.loadAllKullanici();
     });
   }
 }

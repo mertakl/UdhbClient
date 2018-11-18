@@ -10,9 +10,11 @@ import {SeferService} from '../../_services';
   styleUrls: ['./update-sefer.component.css']
 })
 export class UpdateSeferComponent implements OnInit {
+  submit: any;
 
   constructor(public seferRef: MatDialogRef<UpdateSeferComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: Sefer, public seferService: SeferService) { }
+              @Inject(MAT_DIALOG_DATA) public data: Sefer, public seferService: SeferService) {
+  }
 
   formControl = new FormControl('', [
     Validators.required
@@ -20,7 +22,7 @@ export class UpdateSeferComponent implements OnInit {
 
   getErrorMessage() {
     return this.formControl.hasError('required') ? 'Required field' :
-        '';
+      '';
   }
 
   onNoClick(): void {

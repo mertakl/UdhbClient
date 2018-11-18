@@ -10,6 +10,8 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class AktifSeferComponent implements OnInit {
 
+  submit: any;
+
   constructor(public seferRef: MatDialogRef<AktifSeferComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any, public seferService: SeferService) {
   }

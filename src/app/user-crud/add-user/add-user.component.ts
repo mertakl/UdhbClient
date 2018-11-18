@@ -20,6 +20,7 @@ export class AddUserComponent implements OnInit {
   }
 
   roles = this.service.enumSelector(RoleName);
+  submit: any;
 
   formControl = new FormControl('', [
     Validators.required

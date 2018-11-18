@@ -46,9 +46,7 @@ export class GrupDetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        this.refreshTable();
-      }
+      this.loadAllYolcuWithGrupId(this.data.row.id);
     });
   }
 
@@ -63,14 +61,8 @@ export class GrupDetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        this.refreshTable();
-      }
+      this.loadAllYolcuWithGrupId(this.data.row.id);
     });
-  }
-
-  private refreshTable() {
-    this.paginator._changePageSize(this.paginator.pageSize);
   }
 
 }

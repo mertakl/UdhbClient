@@ -3,30 +3,37 @@
 
   <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
     <div class="form">
-      <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Adı" [(ngModel)]="data.first_name"
+      <mat-form-field color="primary">
+        <input matInput #input class="form-control" placeholder="Adı" [(ngModel)]="data.firstName"
                name="first_name" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Soyadı" [(ngModel)]="data.last_name"
+      <mat-form-field color="primary">
+        <input matInput #input class="form-control" placeholder="Soyadı" [(ngModel)]="data.lastName"
                name="last_name" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Kullanıcı Adı" [(ngModel)]="data.username"
+      <mat-form-field color="primary">
+        <input matInput #input class="form-control" placeholder="Kullanıcı Adı" [(ngModel)]="data.userName"
                name="username" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <input matInput #input class="form-control" placeholder="Email" [(ngModel)]="data.email"
                name="email" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field color="primary">
+        <input matInput #input class="form-control" placeholder="Password" [(ngModel)]="data.password"
+               name="password" type="password" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>

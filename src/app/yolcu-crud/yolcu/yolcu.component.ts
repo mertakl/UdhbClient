@@ -46,9 +46,7 @@ export class YolcuComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        this.refreshTable();
-      }
+      this.loadAllYolcu();
     });
   }
 
@@ -69,9 +67,7 @@ export class YolcuComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        this.refreshTable();
-      }
+      this.loadAllYolcu();
     });
   }
 
@@ -83,14 +79,8 @@ export class YolcuComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        this.refreshTable();
-      }
+      this.loadAllYolcu();
     });
-  }
-
-  private refreshTable() {
-    this.table.renderRows();
   }
 
 }

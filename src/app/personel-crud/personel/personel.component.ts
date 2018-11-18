@@ -3,9 +3,6 @@ import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/mat
 import {first} from 'rxjs/operators';
 import {PersonelService} from '../../_services';
 import {Personel, User} from '../../_models';
-import {AddUserComponent} from '../../user-crud/add-user/add-user.component';
-import {UpdateUserComponent} from '../../user-crud/update-user/update-user.component';
-import {DeleteUserComponent} from '../../user-crud/delete-user/delete-user.component';
 import {AddPersonelComponent} from '../add-personel/add-personel.component';
 import {UpdatePersonelComponent} from '../update-personel/update-personel.component';
 import {DeletePersonelComponent} from '../delete-personel/delete-personel.component';
@@ -48,9 +45,7 @@ export class PersonelComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        this.refreshTable();
-      }
+      this.loadAllPersonel();
     });
   }
 
@@ -70,9 +65,7 @@ export class PersonelComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        this.refreshTable();
-      }
+      this.loadAllPersonel();
     });
   }
 
@@ -86,13 +79,7 @@ export class PersonelComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        this.refreshTable();
-      }
+      this.loadAllPersonel();
     });
-  }
-
-  private refreshTable() {
-    this.paginator._changePageSize(this.paginator.pageSize);
   }
 }

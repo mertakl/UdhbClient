@@ -1,10 +1,10 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {PersonelService} from '../../_services/index';
 import {Personel} from '../../_models';
 import {first} from 'rxjs/operators';
-import {AddPersonelUdhbComponent} from '../add-personel-udhb/add-personel-udhb.component';
-import {IptalPersonelUdhbComponent} from '../iptal-personel-udhb/iptal-personel-udhb.component';
+import {AddPersonelSeferComponent} from '../add-personel-sefer/add-personel-sefer.component';
+import {IptalPersonelSeferComponent} from '../iptal-personel-sefer/iptal-personel-sefer.component';
 
 @Component({
   selector: 'app-sefer-details',
@@ -19,39 +19,39 @@ export class SeferDetailsComponent implements OnInit {
   displayedColumns: string[] = ['id', 'turKodu', 'uyrukUlke', 'tcKimlikPasaportNo',
     'cinsiyet', 'adi', 'soyadi', 'telefon', 'adres', 'actions'];
 
-  constructor(private personelService: PersonelService, public dialog: MatDialog) {
+  constructor(private personelService: PersonelService,
+              public dialog: MatDialog,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
   ngOnInit() {
-    this.loadAllPersonel();
+    this.loadAllPersonelWithSeferId(this.data.row.id);
   }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  private loadAllPersonel() {
-    this.personelService.getAllPersonel().pipe(first()).subscribe(results => {
+  private loadAllPersonelWithSeferId(seferId: number) {
+    this.personelService.getAllPersonelWithSeferId(seferId).pipe(first()).subscribe(results => {
       this.dataSource = new MatTableDataSource(results);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     });
   }
 
-  addPersonel(personel: Personel) {
-    const dialogRef = this.dialog.open(AddPersonelUdhbComponent, {
-      data: {personel: personel}
+  addPersonel() {
+    const dialogRef = this.dialog.open(AddPersonelSeferComponent, {
+      data: {seferId: this.data.row.id}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        this.refreshTable();
-      }
+      this.loadAllPersonelWithSeferId(this.data.row.id);
     });
   }
 
   iptalPersonel(id: number, adi: string, soyadi: string) {
-    const dialogRef = this.dialog.open(IptalPersonelUdhbComponent, {
+    const dialogRef = this.dialog.open(IptalPersonelSeferComponent, {
       data: {
         id: id,
         adi: adi,
@@ -60,13 +60,7 @@ export class SeferDetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        this.refreshTable();
-      }
+      this.loadAllPersonelWithSeferId(this.data.row.id);
     });
-  }
-
-  private refreshTable() {
-    this.paginator._changePageSize(this.paginator.pageSize);
   }
 }

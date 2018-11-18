@@ -4,19 +4,19 @@
   <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
 
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <input matInput #input class="form-control" placeholder="Id" [(ngModel)]="data.id" name="id" required >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <input matInput #input class="form-control" placeholder="Kullanıcı Adı" [(ngModel)]="data.kullaniciAdi" name="kullaniciAdi" required >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <input matInput #input class="form-control" placeholder="Şifre" [(ngModel)]="data.sifre" name="sifre" required >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>

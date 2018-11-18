@@ -81,8 +81,9 @@ body{
 
 .navbar .navbar-brand{
   color: #555;
-  font-weight: 300;
+  font-weight: 600;
   font-size: 18px;
+  margin-left: 20px;
 }
 
 .btn{

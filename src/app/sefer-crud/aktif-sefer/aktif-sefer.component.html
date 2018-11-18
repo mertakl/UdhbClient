@@ -3,20 +3,20 @@
   <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
 
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <input matInput #input class="form-control" [(ngModel)]="data.id" name="id" [readonly]="true" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <input matInput #input class="form-control" [(ngModel)]="data.uetdsSeferReferansNo" name="uetdsSeferReferansNo"
                [readonly]="true" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
     <div class="form">
-      <mat-form-field color="accent">
+      <mat-form-field color="primary">
         <textarea matInput #input class="form-control" placeholder="Aktif Açıklama" [(ngModel)]="data.aktifAciklama"
                   name="aktifAciklama" required></textarea>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>

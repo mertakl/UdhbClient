@@ -1,20 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {AddPersonelSeferComponent} from './add-personel-sefer.component';
 
-import { IptalPersonelUdhbComponent } from './iptal-personel-udhb.component';
 
-describe('IptalPersonelUdhbComponent', () => {
-  let component: IptalPersonelUdhbComponent;
-  let fixture: ComponentFixture<IptalPersonelUdhbComponent>;
+
+describe('AddPersonelUdhbComponent', () => {
+  let component: AddPersonelSeferComponent;
+  let fixture: ComponentFixture<AddPersonelSeferComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IptalPersonelUdhbComponent ]
+      declarations: [ AddPersonelSeferComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IptalPersonelUdhbComponent);
+    fixture = TestBed.createComponent(AddPersonelSeferComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

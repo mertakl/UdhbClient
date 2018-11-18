@@ -1,7 +1,7 @@
 <app-navigation></app-navigation>
 <div class="container">
   <div class="form">
-    <mat-form-field floatPlaceholder="never" color="accent">
+    <mat-form-field floatPlaceholder="never" color="primary">
       <input matInput type="text" (keyup)="applyFilter($event.target.value)" placeholder="Sorgula">
     </mat-form-field>
   </div>
@@ -69,7 +69,7 @@
           </button>
         </mat-header-cell>
         <mat-cell *matCellDef="let grup;">
-          <button mat-icon-button color="accent" matTooltip="Grup Güncelle"
+          <button mat-icon-button color="primary" matTooltip="Grup Güncelle"
                   (click)="updateGrup(grup.id, grup.grupAdi, grup.grupAciklama, grup.baslangicUlke.countryName, grup.baslangicIl.cityName, grup.baslangicIlce.districtName, grup.baslangicYer,
                   grup.bitisUlke.countryName, grup.bitisIl.cityName, grup.bitisIlce.districtName, grup.bitisYer)">
             <mat-icon aria-label="Edit">edit</mat-icon>

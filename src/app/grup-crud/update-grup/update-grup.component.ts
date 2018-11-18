@@ -17,6 +17,7 @@ export class UpdateGrupComponent implements OnInit {
   cities;
   districts;
   travels;
+  submit: any;
 
   constructor(public addGrupRef: MatDialogRef<AddGrupComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Grup,

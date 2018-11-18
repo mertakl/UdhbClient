@@ -11,15 +11,9 @@ import {UtilService} from '../_utils/index';
 })
 export class PersonelService {
 
-  dataChange: BehaviorSubject<Sefer[]> = new BehaviorSubject<Sefer[]>([]);
-  dialogData: any;
-
   constructor(private http: HttpClient, public service: UtilService) {
   }
 
-  getDialogData() {
-    return this.dialogData;
-  }
 
   getAllPersonel() {
     return this.http.get<Personel[]>(`${environment.apiUrl}/udhb/personeller`);
@@ -27,7 +21,15 @@ export class PersonelService {
 
   addPersonel(personel: Personel) {
     this.http.post(`${environment.apiUrl}/udhb/personelEkle`, personel).subscribe(data => {
-        this.dialogData = personel;
+        this.service.openSnackBar(data.toString(), 'Add');
+      },
+      (err: HttpErrorResponse) => {
+        this.service.openSnackBar(err.toString(), 'Add');
+      });
+  }
+
+  addPersonelSefer(personelId: number, seferId: number) {
+    this.http.get(`${environment.apiUrl}/udhb/personelSeferEkle?personelId=` + personelId + '&seferId=' + seferId).subscribe(data => {
         this.service.openSnackBar(data.toString(), 'Add');
       },
       (err: HttpErrorResponse) => {
@@ -37,7 +39,6 @@ export class PersonelService {
 
   updatePersonel(personel: Personel) {
     this.http.put(`${environment.apiUrl}/udhb/personelGuncelle`, personel).subscribe(result => {
-        this.dialogData = personel;
         this.service.openSnackBar(result.toString(), 'Update');
       },
       (err: HttpErrorResponse) => {
@@ -55,6 +56,19 @@ export class PersonelService {
   }
 
   iptalPersonel(id: number, aciklama: string) {
-    return this.http.get(`${environment.apiUrl}/udhb/personelIptal?` + id + '&iptalAciklama=' + aciklama);
+    return this.http.get(`${environment.apiUrl}/udhb/personelIptal?personelId=` + id + '&iptalAciklama=' + aciklama).subscribe(result => {
+        this.service.openSnackBar(result.toString(), 'Delete');
+      },
+      (err: HttpErrorResponse) => {
+        this.service.openSnackBar(err.toString(), 'Delete');
+      });
+  }
+
+  getAllPersonelWithSeferId(seferId: number) {
+    return this.http.get<Personel[]>(`${environment.apiUrl}/udhb/personelWithSeferId?seferId=` + seferId);
+  }
+
+  getAllPersonelWithoutSeferId(seferId: number) {
+    return this.http.get<Personel[]>(`${environment.apiUrl}/udhb/personelWithoutSeferId?seferId=` + seferId);
   }
 }

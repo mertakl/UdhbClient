@@ -1,6 +1,6 @@
 <div class="container">
   <div class="form">
-    <mat-form-field floatPlaceholder="never" color="accent">
+    <mat-form-field floatPlaceholder="never" color="primary">
       <input matInput type="text" (keyup)="applyFilter($event.target.value)" placeholder="Sorgula">
     </mat-form-field>
   </div>
@@ -58,7 +58,7 @@
           </button>
         </mat-header-cell>
         <mat-cell *matCellDef="let yolcu;">
-          <button mat-icon-button color="accent" matTooltip="Yolcu İptal"
+          <button mat-icon-button color="primary" matTooltip="Yolcu İptal"
                   (click)="iptalYolcu(yolcu.id, yolcu.adi, yolcu.soyadi)">
             <mat-icon aria-label="Delete">delete</mat-icon>
           </button>

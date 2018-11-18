@@ -23,7 +23,9 @@ export class SeferComponent implements OnInit {
   displayedColumns: string[] = ['id', 'uetdsSeferReferansNo', 'aracPlaka', 'hareketTarihi', 'hareketSaati',
     'seferAciklama', 'aracTelefonu', 'firmaSeferNo', 'seferBitisTarihi', 'seferBitisSaati', 'durum', 'actions'];
 
-  constructor(private seferService: SeferService, public dialog: MatDialog, public service: UtilService) {
+  constructor(private seferService: SeferService,
+              public dialog: MatDialog,
+              public service: UtilService) {
   }
 
   ngOnInit() {
@@ -34,19 +36,13 @@ export class SeferComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  private refreshTable() {
-    this.paginator._changePageSize(this.paginator.pageSize);
-  }
-
   addSefer(sefer: Sefer) {
     const dialogRef = this.dialog.open(AddSeferComponent, {
       data: {sefer: sefer}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        this.refreshTable();
-      }
+      this.loadAllSefer();
     });
   }
 
@@ -68,9 +64,7 @@ export class SeferComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        this.refreshTable();
-      }
+      this.loadAllSefer();
     });
   }
 
@@ -80,9 +74,7 @@ export class SeferComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        this.refreshTable();
-      }
+      this.loadAllSefer();
     });
   }
 
@@ -93,9 +85,7 @@ export class SeferComponent implements OnInit {
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        if (result === 1) {
-          this.refreshTable();
-        }
+        this.loadAllSefer();
       });
     } else {
       this.service.openSnackBar('Sefer zaten aktif durumda!', 'Warning');
@@ -108,9 +98,7 @@ export class SeferComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        this.refreshTable();
-      }
+      this.loadAllSefer();
     });
   }
 
