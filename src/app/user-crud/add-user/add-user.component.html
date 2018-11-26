@@ -37,6 +37,13 @@
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
+    <div class="form">
+      <mat-select placeholder="Role" [(ngModel)]="data.roles" name="roles">
+        <mat-option *ngFor="let r of roles" [value]="r.title">
+          {{ r.value }}
+        </mat-option>
+      </mat-select>
+    </div>
     <div mat-dialog-actions>
       <button mat-button [type]="submit" [disabled]="!formControl.valid" mat-dialog-close="1" (click)="confirmAdd()">
         Kaydet

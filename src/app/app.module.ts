@@ -44,10 +44,11 @@ import {IptalPersonelSeferComponent} from './sefer-details-crud/iptal-personel-s
 import {SeferDetailsComponent} from './sefer-details-crud/sefer-details/sefer-details.component';
 import {GrupDetailsComponent} from './grup-details-crud/grup-details/grup-details.component';
 import {AddYolcuGrupComponent} from './grup-details-crud/add-yolcu-grup/add-yolcu-grup.component';
-import {AddBagajComponent} from './grup-details-crud/add-bagaj/add-bagaj.component';
-import {DeleteBagajComponent} from './grup-details-crud/iptal-bagaj/delete-bagaj.component';
+import {AddBagajComponent} from './bagaj-details-crud/add-bagaj/add-bagaj.component';
 import {AddPersonelComponent} from './personel-crud/add-personel/add-personel.component';
 import {AddPersonelSeferComponent} from './sefer-details-crud/add-personel-sefer/add-personel-sefer.component';
+import { BagajDetailsComponent } from './bagaj-details-crud/bagaj-details/bagaj-details.component';
+import { IptalBagajComponent } from './bagaj-details-crud/iptal-bagaj/iptal-bagaj.component';
 
 @NgModule({
   imports: [
@@ -107,8 +108,9 @@ import {AddPersonelSeferComponent} from './sefer-details-crud/add-personel-sefer
     AddYolcuGrupComponent,
     IptalYolcuComponent,
     AddBagajComponent,
-    DeleteBagajComponent,
-    AddPersonelSeferComponent
+    AddPersonelSeferComponent,
+    BagajDetailsComponent,
+    IptalBagajComponent
   ],
   entryComponents: [
     AddPersonelComponent,
@@ -131,7 +133,10 @@ import {AddPersonelSeferComponent} from './sefer-details-crud/add-personel-sefer
     AddYolcuGrupComponent,
     IptalYolcuComponent,
     AddPersonelSeferComponent,
-    IptalPersonelSeferComponent
+    IptalPersonelSeferComponent,
+    BagajDetailsComponent,
+    AddBagajComponent,
+    IptalBagajComponent
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

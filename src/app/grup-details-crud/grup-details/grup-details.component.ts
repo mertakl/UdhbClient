@@ -5,6 +5,7 @@ import {AddYolcuGrupComponent} from '../../grup-details-crud/add-yolcu-grup/add-
 import {Personel, Yolcu} from '../../_models';
 import {MAT_DIALOG_DATA, MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {first} from 'rxjs/operators';
+import {BagajDetailsComponent} from "../../bagaj-details-crud/bagaj-details/bagaj-details.component";
 
 @Component({
   selector: 'app-grup-details',
@@ -57,6 +58,18 @@ export class GrupDetailsComponent implements OnInit {
         id: id,
         adi: adi,
         soyadi: soyadi
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.loadAllYolcuWithGrupId(this.data.row.id);
+    });
+  }
+
+  yolcuBagajlari(id: number) {
+    const dialogRef = this.dialog.open(BagajDetailsComponent, {
+      data: {
+        yolcuId: id
       }
     });
 

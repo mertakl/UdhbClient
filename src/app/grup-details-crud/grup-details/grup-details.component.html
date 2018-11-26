@@ -62,6 +62,10 @@
                   (click)="iptalYolcu(yolcu.id, yolcu.adi, yolcu.soyadi)">
             <mat-icon aria-label="Delete">delete</mat-icon>
           </button>
+          <button mat-icon-button color="primary" matTooltip="Bagajlar"
+                  (click)="yolcuBagajlari(yolcu.id)">
+            <mat-icon aria-label="Work">work</mat-icon>
+          </button>
         </mat-cell>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

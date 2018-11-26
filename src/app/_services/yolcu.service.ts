@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {Sefer, Yolcu} from '../_models/index';
+import {Bagaj, Sefer, Yolcu} from '../_models/index';
 import {environment} from '../../environments/environment';
 import {BehaviorSubject} from 'rxjs';
 import {UtilService} from '../_utils/index';
@@ -72,6 +72,28 @@ export class YolcuService {
       },
       (err: HttpErrorResponse) => {
         this.service.openSnackBar(err.toString(), 'Add');
+      });
+  }
+
+  getAllBagajWithYolcuId(yolcuId: number) {
+    return this.http.get<Bagaj[]>(`${environment.apiUrl}/udhb/getBagajWithYolcuId?yolcuId=` + yolcuId);
+  }
+
+  addBagaj(yolcuId: number, bagaj: Bagaj) {
+    this.http.post(`${environment.apiUrl}/udhb/yolcuBagajEkle?yolcuId=` + yolcuId, bagaj).subscribe(data => {
+        this.service.openSnackBar(data.toString(), 'Add');
+      },
+      (err: HttpErrorResponse) => {
+        this.service.openSnackBar(err.toString(), 'Add');
+      });
+  }
+
+  iptalBagaj(bagajId: number) {
+    this.http.delete(`${environment.apiUrl}/udhb/yolcuBagajIptal?bagajId=` + bagajId).subscribe(data => {
+        this.service.openSnackBar(data.toString(), 'Delete');
+      },
+      (err: HttpErrorResponse) => {
+        this.service.openSnackBar(err.toString(), 'Delete');
       });
   }
 }
