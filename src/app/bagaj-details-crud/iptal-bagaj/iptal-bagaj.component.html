@@ -1,0 +1,18 @@
+<div class="container">
+  <h3 mat-dialog-title>Bagajı iptal etmek istediğinize emin misiniz?</h3>
+
+  <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+
+    <div class="form">
+      <mat-form-field color="primary">
+        <input matInput #input class="form-control" [(ngModel)]="data.id" name="id" [readonly]="true" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close="1" (click)="confirmDelete()">İptal Et</button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">Vazgeç</button>
+    </div>
+  </form>
+</div>
+
