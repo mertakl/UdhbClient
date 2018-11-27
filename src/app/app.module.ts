@@ -49,6 +49,7 @@ import {AddPersonelComponent} from './personel-crud/add-personel/add-personel.co
 import {AddPersonelSeferComponent} from './sefer-details-crud/add-personel-sefer/add-personel-sefer.component';
 import { BagajDetailsComponent } from './bagaj-details-crud/bagaj-details/bagaj-details.component';
 import { IptalBagajComponent } from './bagaj-details-crud/iptal-bagaj/iptal-bagaj.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   imports: [
@@ -110,7 +111,8 @@ import { IptalBagajComponent } from './bagaj-details-crud/iptal-bagaj/iptal-baga
     AddBagajComponent,
     AddPersonelSeferComponent,
     BagajDetailsComponent,
-    IptalBagajComponent
+    IptalBagajComponent,
+    HomeComponent
   ],
   entryComponents: [
     AddPersonelComponent,

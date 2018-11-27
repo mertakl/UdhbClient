@@ -8,11 +8,13 @@ import {YolcuComponent} from './yolcu-crud/yolcu/yolcu.component';
 import {PersonelComponent} from './personel-crud/personel';
 import {UdhbKullaniciComponent} from './udhb-kullanici-crud/udhb-kullanici/udhb-kullanici.component';
 import {UserComponent} from './user-crud/user/user.component';
+import {HomeComponent} from './home/home.component';
 
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: '', component: SeferComponent, canActivate: [AuthGuard]},
+  {path: '', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'sefer', component: SeferComponent, canActivate: [AuthGuard]},
   {path: 'grup', component: GrupComponent, canActivate: [AuthGuard]},
   {path: 'yolcu', component: YolcuComponent, canActivate: [AuthGuard]},
   {path: 'personel', component: PersonelComponent, canActivate: [AuthGuard]},
